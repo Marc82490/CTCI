@@ -17,6 +17,8 @@ class LinkedList {
         void addVal(int val);
         void display();
         bool isPalindrome();
+        void addValToEnd(int val);
+        Node *getHead() { return head; }
 
     private:
         Node *head{};
@@ -34,8 +36,41 @@ void LinkedList::addVal(int val) {
     head = newNode;
 }
 
-bool LinkedList::isPalindrome() {
+void LinkedList::addValToEnd(int val) {
+    Node *newNode = new Node(val);
 
+    if (!head) {
+        head = newNode;
+        return;
+    }
+
+    Node *curr = head;
+    while (curr->getNext() != nullptr) {
+        curr = curr->getNext();
+    }
+    curr->setNext(newNode);
+}
+
+bool LinkedList::isPalindrome() {
+    LinkedList reverse{};
+
+    Node *curr = head;
+    while (curr != nullptr) {
+        reverse.addVal(curr->getData());
+        curr = curr->getNext();
+    }
+
+    curr = head;
+    Node *headReverse = reverse.getHead();
+    while (curr != nullptr && headReverse != nullptr) {
+        if (curr->getData() == headReverse->getData()) {
+            curr = curr->getNext();
+            headReverse = headReverse->getNext();
+        } else {
+            return false;
+        }
+    }
+    return true;
 }
 
 void LinkedList::display() {
