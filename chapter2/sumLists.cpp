@@ -153,16 +153,6 @@ LinkedList sumListsReverse(LinkedList list1, LinkedList list2) {
     Node *list2Node = list2.getHead();
     int carry{};
 
-    // while (list1Node->getNext() != nullptr || list2Node->getNext() != nullptr) {
-    //     int sum{};
-    //     sum = list1Node->getData() + list2Node->getData() + carry;
-    //     carry = sum / 10;
-    //     sum %= 10;
-    //     sumList.addVal
-    // }
-    // while (list1Node->getNext() != nullptr && list2Node->getNext() != nullptr) {
-
-    // }
     sumList = sumListsReverseHelper(list1Node, list2Node, sumList, carry);
     return sumList;
 }
