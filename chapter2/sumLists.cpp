@@ -18,6 +18,7 @@ class LinkedList {
         void addValToEnd(int val);
         void display();
         Node *getHead() { return head; }
+        int getLen();
 
     private:
         Node *head{};
@@ -48,6 +49,35 @@ void LinkedList::addValToEnd(int val) {
         curr = curr->getNext();
     }
     curr->setNext(newNode);
+}
+
+int LinkedList::getLen() {
+    if (!head) {
+        return 0;
+    }
+
+    int count{};
+    Node *curr = head;
+    while (curr != nullptr) {
+        curr = curr->getNext();
+        count++;
+    }
+
+    return count;
+}
+
+int getLen(Node* node) {
+    if (!node) {
+        return 0;
+    }
+
+    int count{};
+    while (node != nullptr) {
+        node = node->getNext();
+        count++;
+    }
+
+    return count;
 }
 
 void LinkedList::display() {
@@ -90,6 +120,53 @@ LinkedList sumLists(Node* list1, Node* list2) {
     return sumList;
 }
 
+LinkedList sumListsReverseHelper(Node* curr1, Node* curr2, LinkedList sumList, int carry) {
+    if (curr1 == nullptr || curr2 == nullptr) {
+        return sumList;
+    }
+
+    int sum = curr1->getData() + curr2->getData() + carry;
+    carry = sum / 10;
+    sum %= 10;
+    sumList.addVal(sum);
+    sumListsReverseHelper(curr1->getNext(), curr2->getNext(), sumList, carry);
+}
+
+LinkedList sumListsReverse(LinkedList list1, LinkedList list2) {
+    LinkedList sumList{};
+
+    int len1 = list1.getLen();
+    int len2 = list2.getLen();
+    int maxLen = len1 > len2 ? len1 : len2;
+    int minLen = len1 <= len2 ? len1 : len2;
+    int count{};
+
+    while (count < (maxLen-minLen)) {
+        if (len1 > len2) {
+            list2.addVal(0);
+        } else {
+            list1.addVal(0);
+        }
+    }
+
+    Node *list1Node = list1.getHead();
+    Node *list2Node = list2.getHead();
+    int carry{};
+
+    // while (list1Node->getNext() != nullptr || list2Node->getNext() != nullptr) {
+    //     int sum{};
+    //     sum = list1Node->getData() + list2Node->getData() + carry;
+    //     carry = sum / 10;
+    //     sum %= 10;
+    //     sumList.addVal
+    // }
+    // while (list1Node->getNext() != nullptr && list2Node->getNext() != nullptr) {
+
+    // }
+    sumList = sumListsReverseHelper(list1Node, list2Node, sumList, carry);
+    return sumList;
+}
+
 int main() {
     LinkedList linkedList1{};
     LinkedList linkedList2{};
@@ -110,4 +187,8 @@ int main() {
     LinkedList sumList = sumLists(list1, list2);
 
     sumList.display();
+
+    LinkedList sumListReverse = sumListsReverse(linkedList1, linkedList2);
+
+    sumListReverse.display();
 }
