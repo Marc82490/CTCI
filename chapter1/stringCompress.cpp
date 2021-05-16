@@ -2,10 +2,10 @@
 #include <vector>
 #include <string>
 
-using namespace std;
+// using namespace std;
 
-string compress(string s) {
-    string compStr;
+std::string compress(std::string s) {
+    std::string compStr;
     char currChar{s[0]};
     int count{};
 
@@ -15,21 +15,21 @@ string compress(string s) {
             count++;
         }
         else {
-            compStr = compStr + currChar + to_string(count);
+            compStr = compStr + currChar + std::to_string(count);
             currChar = s[x];
             count = 1;
         }
     }
 
-    compStr = compStr + currChar + to_string(count);
+    compStr = compStr + currChar + std::to_string(count);
 
     return compStr;
 }
 
 int main() {
-    string str;
-    cin >> str;
-    string compStr = compress(str);
-    string outStr = (compStr.size() < str.size()) ? compStr : str;
-    cout << outStr;
+    std::string str;
+    std::cin >> str;
+    std::string compStr = compress(str);
+    std::string outStr = (compStr.size() < str.size()) ? compStr : str;
+    std::cout << outStr;
 }

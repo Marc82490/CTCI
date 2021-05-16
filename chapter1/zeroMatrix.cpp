@@ -6,11 +6,11 @@
 constexpr int M = 5;
 constexpr int N = 4;
 
-using namespace std;
+// using namespace std;
 
 void zeroMatrix(int matrix[M][N]) {
-    set<int> rows{};
-    set<int> cols{};
+    std::set<int> rows{};
+    std::set<int> cols{};
 
     for (int i{}; i < M; i++)
     {
@@ -37,22 +37,22 @@ void zeroMatrix(int matrix[M][N]) {
 int main() {
     int matrix[M][N] = {{1,2,3,4}, {5,6,0,8}, {9,10,11,12}, {13,14,15,16}, {0,18,19,20}};
 
-    cout << "BEFORE\n";
+    std::cout << "BEFORE\n";
     for (int i{}; i < M; i++)
     {
         for (int j{}; j < N; j++) {
-            cout << matrix[i][j] << '\t';
+            std::cout << matrix[i][j] << '\t';
         }
-        cout << '\n';
+        std::cout << '\n';
     }
     zeroMatrix(matrix);
 
-    cout << "AFTER\n";
+    std::cout << "AFTER\n";
     for (int i{}; i < M; i++)
     {
         for (int j{}; j < N; j++) {
-            cout << matrix[i][j] << '\t';
+            std::cout << matrix[i][j] << '\t';
         }
-        cout << '\n';
+        std::cout << '\n';
     }
 }

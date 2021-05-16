@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+// using namespace std;
 
-string URL(string str1) {
-    string str2;
+std::string URL(std::string str1) {
+    std::string str2;
     bool flag = false;
 
     int x = str1.length() - 1;
@@ -21,12 +21,12 @@ string URL(string str1) {
             str2.append("02%");
         }
     }
-    string str3(str2.rbegin(), str2.rend());
+    std::string str3(str2.rbegin(), str2.rend());
     return str3;
 }
 
 int main() {
-    string str1 = "a b";
+    std::string str1 = "a b";
     // cin >> str1;
-    cout << URL(str1);
+    std::cout << URL(str1);
 }

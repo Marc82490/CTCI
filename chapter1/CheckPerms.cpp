@@ -2,11 +2,11 @@
 #include <string>
 #include <map>
 
-using namespace std;
+// using namespace std;
 
-int checkPerms(string str1, string str2) {
-    map<char, int> dict1;
-    map<char, int> dict2;
+int checkPerms(std::string str1, std::string str2) {
+    std::map<char, int> dict1;
+    std::map<char, int> dict2;
 
     for (char ch : str1) {
         // dict1.try_emplace(ch, 1);
@@ -23,8 +23,8 @@ int checkPerms(string str1, string str2) {
 }
 
 int main() {
-    string str1;
-    string str2;
-    cin >> str1 >> str2;
-    cout << checkPerms(str1, str2);
+    std::string str1;
+    std::string str2;
+    std::cin >> str1 >> str2;
+    std::cout << checkPerms(str1, str2);
 }

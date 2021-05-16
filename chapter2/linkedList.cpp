@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std;
+// using namespace std;
 
 class Node {
     /* Node Class
@@ -69,7 +69,7 @@ void LinkedList::remove(int val) {
     /* Removes a value from the linked list */
     // Handle if the list is currently empty
     if (!head) {
-        cout << "\nList empty, nothing to remove\n";
+        std::cout << "\nList empty, nothing to remove\n";
     }
 
     // Keep track of current and previous positions in the list
@@ -83,7 +83,7 @@ void LinkedList::remove(int val) {
             curr = curr->getNext();
         }
         else {
-            cout << "\nNode not found\n";
+            std::cout << "\nNode not found\n";
             return;
         }
     }
@@ -96,7 +96,7 @@ bool LinkedList::contains(int val) {
     /* Checks whether the list contains a given value */
     // Handle if the list is currently empty
     if (!head) {
-        cout << "\nList empty, contains nothing\n";
+        std::cout << "\nList empty, contains nothing\n";
     }
 
     // Move down the list until either reach the end or get to the value
@@ -144,7 +144,7 @@ void LinkedList::reverse() {
     /* Reverses a linked list */
     // Handle if the list is currently empty
     if (!head) {
-        cout << "\nList empty, nothing to reverse\n";
+        std::cout << "\nList empty, nothing to reverse\n";
     }
 
     // Keep track of where we are
@@ -167,19 +167,19 @@ void LinkedList::display() {
     /* Print out each value in the list */
     // Handle if the list is currently empty
     if (!head) {
-        cout << "\nNo head\n";
+        std::cout << "\nNo head\n";
         return;
     }
 
     // Move down the list and print out each value
-    cout << '\n';
+    std::cout << '\n';
     Node *n = head;
     while (n->getNext() != NULL) {
-        cout << n->getData() << "->";
+        std::cout << n->getData() << "->";
         n = n->getNext();
     }
     // Print out the last value in the list
-    cout << n->getData();
+    std::cout << n->getData();
 }
 
 int main() {
@@ -191,7 +191,7 @@ int main() {
     // linkedList.insert(val, 6);
     linkedList.display();
 
-    while (cin >> val)
+    while (std::cin >> val)
     {
         linkedList.addVal(val);
     }
@@ -202,9 +202,9 @@ int main() {
 
     linkedList.display();
 
-    cout << '\n' << linkedList.contains(2);
+    std::cout << '\n' << linkedList.contains(2);
 
-    cout << '\n' << linkedList.contains(3);
+    std::cout << '\n' << linkedList.contains(3);
 
     linkedList.insert(10, 3);
 

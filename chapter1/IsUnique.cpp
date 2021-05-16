@@ -3,12 +3,12 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
+// using namespace std;
 
 int strChecker() {
-    string str = "abca";
+    std::string str = "abca";
 
-    vector<int> alpha(26);
+    std::vector<int> alpha(26);
 
     for (auto ch : str) {
         int a{};
@@ -24,5 +24,5 @@ int strChecker() {
 }
 
 int main () {
-    cout << strChecker();
+    std::cout << strChecker();
 }

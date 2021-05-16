@@ -32,26 +32,26 @@ void rotateMatrix(int matrix[][N]) {
 int main() {
     int matrix[N][N] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
 
-    cout << "BEFORE\n";
+    std::cout << "BEFORE\n";
     for (int i{}; i < N; i++)
     {
         for (int j{}; j < N; j++)
         {
-            cout << matrix[i][j];
-            cout << '\t';
+            std::cout << matrix[i][j];
+            std::cout << '\t';
         }
-        cout << '\n';
+        std::cout << '\n';
     }
 
     rotateMatrix(matrix);
-    cout << "AFTER\n";
+    std::cout << "AFTER\n";
     for (int i{}; i < N; i++)
     {
         for (int j{}; j < N; j++)
         {
-            cout << matrix[i][j];
-            cout << '\t';
+            std::cout << matrix[i][j];
+            std::cout << '\t';
         }
-        cout << '\n';
+        std::cout << '\n';
     }
 }

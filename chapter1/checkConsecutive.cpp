@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
+// using namespace std;
 
-vector<int> buildVector(const vector<int>& arr) {
-    vector<int> tally(arr.size());
+std::vector<int> buildVector(const std::vector<int>& arr) {
+    std::vector<int> tally(arr.size());
 
     for (int x : arr) {
         tally[(x-1)] += 1;
@@ -13,8 +13,8 @@ vector<int> buildVector(const vector<int>& arr) {
     return tally;
 }
 
-bool checkConsecutive(const vector<int>& arr) {
-    vector<int> tally = buildVector(arr);
+bool checkConsecutive(const std::vector<int>& arr) {
+    std::vector<int> tally = buildVector(arr);
 
     for (int ele : tally) {
         if (ele == 0) {
@@ -26,6 +26,6 @@ bool checkConsecutive(const vector<int>& arr) {
 }
 
 int main() {
-    vector<int> arr{1,3,2,4};
-    cout << checkConsecutive(arr);
+    std::vector<int> arr{1,3,2,4};
+    std::cout << checkConsecutive(arr);
 }

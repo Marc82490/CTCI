@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std;
+// using namespace std;
 
 class Node {
     public:
@@ -40,12 +40,12 @@ void LinkedList::addVal(int val) {
 
 void LinkedList::deleteNode(Node* node) {
     if (!node) {
-        cout << "\nNode Invalid\n";
+        std::cout << "\nNode Invalid\n";
         return;
     }
 
     if (!head) {
-        cout << "\nList Empty\n";
+        std::cout << "\nList Empty\n";
         return;
     }
 
@@ -54,14 +54,14 @@ void LinkedList::deleteNode(Node* node) {
         node->setData(next->getData());
         node->setNext(next->getNext());
     } else {
-        cout << "\nNode at end of list, cannot remove\n";
+        std::cout << "\nNode at end of list, cannot remove\n";
         return;
     }
 }
 
 Node* LinkedList::nodeAddr(int pos) {
     if (!head) {
-        cout << "\nList Empty\n";
+        std::cout << "\nList Empty\n";
         return nullptr;
     }
 
@@ -81,24 +81,24 @@ Node* LinkedList::nodeAddr(int pos) {
 
 void LinkedList::display() {
     if (!head) {
-        cout << "\nList Empty\n";
+        std::cout << "\nList Empty\n";
         return;
     }
 
-    cout << '\n';
+    std::cout << '\n';
     Node *curr = head;
     while (curr->getNext() != nullptr) {
-        cout << curr->getData() << "->";
+        std::cout << curr->getData() << "->";
         curr = curr->getNext();
     }
-    cout << curr->getData() << '\n';
+    std::cout << curr->getData() << '\n';
 }
 
 int main() {
     LinkedList linkedList{};
     int val{};
 
-    while (cin>>val) {
+    while (std::cin>>val) {
         linkedList.addVal(val);
     }
 

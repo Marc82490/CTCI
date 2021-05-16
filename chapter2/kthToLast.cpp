@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std;
+// using namespace std;
 
 class Node {
     public:
@@ -50,7 +50,7 @@ void LinkedList::addVal(int val) {
 
 int LinkedList::kthToLast(int k) {
     if (!head) {
-        cout << "\nList Empty\n";
+        std::cout << "\nList Empty\n";
     }
 
     Node *first = head;
@@ -73,29 +73,29 @@ int LinkedList::kthToLast(int k) {
 
 void LinkedList::display() {
     if (!head) {
-        cout << "\nList Empty\n";
+        std::cout << "\nList Empty\n";
     }
 
-    cout << '\n';
+    std::cout << '\n';
     Node *curr = head;
     while (curr->getNext() != nullptr) {
-        cout << curr->getData() << "->";
+        std::cout << curr->getData() << "->";
         curr = curr->getNext();
     }
-    cout << curr->getData() << '\n';
+    std::cout << curr->getData() << '\n';
 }
 
 int main() {
     LinkedList linkedList{};
     int val;
-    while (cin>>val) {
+    while (std::cin>>val) {
         linkedList.addVal(val);
     }
 
     linkedList.display();
 
-    cout << '\n' << linkedList.kthToLast(0);
-    cout << '\n' << linkedList.kthToLast(1);
-    cout << '\n' << linkedList.kthToLast(2);
-    cout << '\n' << linkedList.kthToLast(3);
+    std::cout << '\n' << linkedList.kthToLast(0);
+    std::cout << '\n' << linkedList.kthToLast(1);
+    std::cout << '\n' << linkedList.kthToLast(2);
+    std::cout << '\n' << linkedList.kthToLast(3);
 }
