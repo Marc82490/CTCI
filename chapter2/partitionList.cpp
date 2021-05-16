@@ -20,7 +20,7 @@ class Node {
 class LinkedList {
     public:
         void addVal(int val);
-        void partition(int val);
+        Node* partition(int val);
         void display();
 
     private:
@@ -39,22 +39,63 @@ void LinkedList::addVal(int val) {
     head = newNode;
 }
 
-void LinkedList::partition(int val) {
-    std::vector<int> vals{};
+/* BAD ATTEMPT */
+// void LinkedList::partition(int val) {
+//     std::vector<int> vals{};
+
+//     Node *curr = head;
+//     while (curr != nullptr) {
+//         vals.push_back(curr->getData());
+//         curr = curr->getNext();
+//     }
+
+//     std::sort(vals.begin(), vals.end());
+
+//     curr = head;
+//     for (int val : vals) {
+//         curr->setData(val);
+//         curr = curr->getNext();
+//     }
+// }
+
+/* ANSWER FROM THE BOOK */
+Node* LinkedList::partition(int val) {
+    Node *leftHead = nullptr;
+    Node *leftTail = nullptr;
+    Node *rightHead = nullptr;
+    Node *rightTail = nullptr;
 
     Node *curr = head;
     while (curr != nullptr) {
-        vals.push_back(curr->getData());
-        curr = curr->getNext();
+        Node *next = curr->getNext();
+        curr->setNext(nullptr);
+
+        if (curr->getData() < val) {
+            if (leftHead == nullptr) {
+                leftHead = curr;
+                leftTail = leftHead;
+            } else {
+                leftTail->setNext(curr);
+                leftTail = curr;
+            }
+        } else {
+            if (rightHead == nullptr) {
+                rightHead = curr;
+                rightTail = rightHead;
+            } else {
+                rightTail->setNext(curr);
+                rightTail = curr;
+            }
+        }
+        curr = next;
     }
 
-    std::sort(vals.begin(), vals.end());
-
-    curr = head;
-    for (int val : vals) {
-        curr->setData(val);
-        curr = curr->getNext();
+    if (leftHead == nullptr) {
+        return rightHead;
     }
+
+    leftTail->setNext(rightHead);
+    return leftHead;
 }
 
 void LinkedList::display() {
