@@ -56,6 +56,7 @@ int LinkedList::kthToLast(int k) {
     Node *first = head;
     Node *second = head;
 
+    // Using two runners, set the fast runner to be k nodes ahead of the slow runner.
     for (int i{}; i < k; i++)
     {
         if (first->getNext() != nullptr) {
@@ -63,6 +64,8 @@ int LinkedList::kthToLast(int k) {
         }
     }
 
+    // Move both runners down the list until the fast runner reaches the end. At this point, the slow runner is
+    // exactly k nodes from the end of the list. Return the value from that node.
     while (first->getNext() != nullptr) {
         first = first->getNext();
         second = second->getNext();

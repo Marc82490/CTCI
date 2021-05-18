@@ -60,16 +60,21 @@ void LinkedList::addVal(int val) {
 
 /* ANSWER FROM THE BOOK */
 Node* LinkedList::partition(int val) {
+    // Keep track of head and tail of 2 lists: the list before the partition and the list after the partition.
     Node *leftHead = nullptr;
     Node *leftTail = nullptr;
     Node *rightHead = nullptr;
     Node *rightTail = nullptr;
 
+    // Loop through the list
     Node *curr = head;
     while (curr != nullptr) {
+        // Capture a temp value of the next element in the list and clear the next pointer from the current element.
         Node *next = curr->getNext();
         curr->setNext(nullptr);
 
+        // Determine the place of the current element within the left or ride partition lists. Update the Heads and Tails
+        // as appropriate.
         if (curr->getData() < val) {
             if (leftHead == nullptr) {
                 leftHead = curr;
@@ -90,10 +95,12 @@ Node* LinkedList::partition(int val) {
         curr = next;
     }
 
+    // If there are no elements before the partition, just return the right list.
     if (leftHead == nullptr) {
         return rightHead;
     }
 
+    // Otherwise, concatenate the lists and return the Head of the whole list.
     leftTail->setNext(rightHead);
     return leftHead;
 }

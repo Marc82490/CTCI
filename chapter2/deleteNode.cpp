@@ -49,6 +49,8 @@ void LinkedList::deleteNode(Node* node) {
         return;
     }
 
+    // As long as the node is not at the end of the list, copy the value of the next node into the current node 
+    // (the node to delete), copy the next pointer from the next node into the current node, and slice out the next node.
     if (node->getNext() != nullptr) {
         Node *next = node->getNext();
         node->setData(next->getData());

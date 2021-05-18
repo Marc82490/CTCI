@@ -50,6 +50,7 @@ void LinkedList::addVal(int val) {
 }
 
 void LinkedList::removeDupes() {
+    // Use a set to store the values seen.
     std::set<int> dataSet;
 
     if (!head) {
@@ -71,6 +72,9 @@ void LinkedList::removeDupes() {
     // {
     //     addVal(element.first);
     // }
+
+    // Move down the list, checking whether each node's data is one that's been seen before. If so, slice out that node.
+    // Otherwise, take note of having seen that value and move on to the next node.
     while (curr != nullptr) {
         auto result = dataSet.find(curr->getData());
         if (result != dataSet.end()) {
