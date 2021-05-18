@@ -5,9 +5,12 @@
 
 using namespace std;
 
+/* THE KEY TO THIS SOLUTION IS KNOWING THAT ROTATING AN NxN MATRIX 90 DEGREES IS THE SAME AS TRANSPOSING THE MATRIX
+AND FLIPPING EACH ROW SYMMETRICALLY ABOUT THE Y-AXIS. */
 void rotateMatrix(int matrix[][N]) {
     int len = N;
 
+    // Loop through each row, then each column, and transpose the matrix about the diagonal.
     for (int i{}; i < len; i++)
     {
         for (int j{i}; j < len; j++)
@@ -18,6 +21,7 @@ void rotateMatrix(int matrix[][N]) {
         }
     }
 
+    // Loop through each row, flipping each row symmetrically about the Y-axis.
     for (int i{}; i < len; i++)
     {
         for (int j{}; j < (len / 2); j++)

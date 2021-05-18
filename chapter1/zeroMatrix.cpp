@@ -9,9 +9,11 @@ constexpr int N = 4;
 // using namespace std;
 
 void zeroMatrix(int matrix[M][N]) {
+    // Keep track of which rows and columns have 0s
     std::set<int> rows{};
     std::set<int> cols{};
 
+    // Loop through each row and column. If the position has a 0, note the row and column position.
     for (int i{}; i < M; i++)
     {
         for (int j{}; j < N; j++)
@@ -23,6 +25,7 @@ void zeroMatrix(int matrix[M][N]) {
         }
     }
 
+    // Loop through each row and column. If either of its positions are in the 0-sets, zero out the position.
     for (int i{}; i < M; i++)
     {
         for (int j{}; j < N; j++)
