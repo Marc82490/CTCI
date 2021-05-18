@@ -94,11 +94,14 @@ void LinkedList::display() {
     std::cout << curr->getData() << '\n';
 }
 
+/* SOLUTION WHERE "1->2->3" REPRESENTS THE NUMBER 321 */
 LinkedList sumLists(Node* list1, Node* list2) {
     LinkedList sumList{};
 
     int carry{};
 
+    // Loop through both lists, adding up each pair of nodes, making sure to account for any carry from the last
+    // set of additions. Append the sum to the new list and move to the next nodes.
     while (list1->getNext() != nullptr || list2->getNext() != nullptr || carry != 0) {
         int sum{};
         sum = list1->getData() + list2->getData() + carry;
@@ -120,11 +123,14 @@ LinkedList sumLists(Node* list1, Node* list2) {
     return sumList;
 }
 
+/* HELPER FUNCTION FOR THE RECURSIVE sumListsReverse FUNCTION */
 LinkedList sumListsReverseHelper(Node* curr1, Node* curr2, LinkedList sumList, int carry) {
+    // Base Case: Reach the end of the list, return the built list.
     if (curr1 == nullptr || curr2 == nullptr) {
         return sumList;
     }
 
+    // Recursive Case: Sum the pair of nodes plus any carry from the last addition, add it to the built list, and recurse.
     int sum = curr1->getData() + curr2->getData() + carry;
     carry = sum / 10;
     sum %= 10;
@@ -132,15 +138,19 @@ LinkedList sumListsReverseHelper(Node* curr1, Node* curr2, LinkedList sumList, i
     sumListsReverseHelper(curr1->getNext(), curr2->getNext(), sumList, carry);
 }
 
+/* SOLUTION WHERE "1->2->3" REPESENTS THE NUMBER 123 */
 LinkedList sumListsReverse(LinkedList list1, LinkedList list2) {
     LinkedList sumList{};
 
+    // Need to account for differences in the lengths of the lists, since 1234 + 567 has an implicit 0 in the thousands
+    // place of 567.
     int len1 = list1.getLen();
     int len2 = list2.getLen();
     int maxLen = len1 > len2 ? len1 : len2;
     int minLen = len1 <= len2 ? len1 : len2;
     int count{};
 
+    // Append 0s to which list is shorter in length, until the lengths are equal.
     while (count < (maxLen-minLen)) {
         if (len1 > len2) {
             list2.addVal(0);
@@ -153,6 +163,7 @@ LinkedList sumListsReverse(LinkedList list1, LinkedList list2) {
     Node *list2Node = list2.getHead();
     int carry{};
 
+    // Recursively sum the nodes and build the resulting list.
     sumList = sumListsReverseHelper(list1Node, list2Node, sumList, carry);
     return sumList;
 }

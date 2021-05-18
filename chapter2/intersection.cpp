@@ -84,16 +84,20 @@ Node* isIntersecting(LinkedList list1, LinkedList list2) {
     Node *list1Node = list1.getHead();
     Node *list2Node = list2.getHead();
 
+    // Need lengths in order to handle differently sized lists.
     int len1 = list1.getLen();
     int len2 = list2.getLen();
     int diff = len1 - len2;
 
+    // If the lists are not of the same size, determine the difference in their lengths
     if (diff) {
         int maxLen = len1 > len2 ? len1 : len2;
         int minLen = len1 < len2 ? len1 : len2;
         diff = maxLen - minLen;
     }
     
+    // For whichever list is longer, move the runner on that list forward so that there will be exactly the 
+    // same number of nodes left in both lists once we start looping.
     while (diff) {
         if (len1 > len2) {
             list1Node = list1Node->getNext();
@@ -103,6 +107,8 @@ Node* isIntersecting(LinkedList list1, LinkedList list2) {
         diff--;
     }
 
+    // With both runners equidistant from the ends of their lists, loop through both lists and check if the
+    // nodes are the same address (the lists intersect). Return the first node they meet at.
     while (list1Node != nullptr || list2Node != nullptr) {
         if (list1Node == list2Node) {
             return list1Node;

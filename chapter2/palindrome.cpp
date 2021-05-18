@@ -51,15 +51,18 @@ void LinkedList::addValToEnd(int val) {
     curr->setNext(newNode);
 }
 
+/* INEFFICIENT. CAN IMPROVE SPACE COMPLEXITY BY NOT MAKING A REVERSE COPY. */
 bool LinkedList::isPalindrome() {
     LinkedList reverse{};
 
+    // Create a reverse copy of the linked list.
     Node *curr = head;
     while (curr != nullptr) {
         reverse.addVal(curr->getData());
         curr = curr->getNext();
     }
 
+    // Loop through both lists and compare each node. If they ever don't match, the original list is not a palindrome.
     curr = head;
     Node *headReverse = reverse.getHead();
     while (curr != nullptr && headReverse != nullptr) {
